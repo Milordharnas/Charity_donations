@@ -22,5 +22,5 @@ urlpatterns = [
     path("", IndexPage.as_view()),
     path("login", LoginPage.as_view()),
     path("register", RegisterPage.as_view()),
-    path("addDonation", AddDonationPage.as_view()),
+    path("form", AddDonationPage.as_view()),
 ]

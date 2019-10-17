@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+
 # Create your models here.
 
 INSTITUTION_TYPES = (
@@ -9,19 +10,22 @@ INSTITUTION_TYPES = (
     (3, "zbiórka lokalna"),
 )
 
+
 class Categorie(models.Model):
     name = models.CharField(max_length=128)
 
+
 class Institution(models.Model):
     name = models.CharField(max_length=128)
-    description = models.TextField(default = None)
+    description = models.TextField(default=None)
     types = models.IntegerField(choices=INSTITUTION_TYPES, default=1)
-    categories = models.ManyToManyField(Categorie)
+    categories = models.ManyToManyField(Categorie, null=True)
+
 
 class Donation(models.Model):
     quantity = models.IntegerField()
-    categories = models.ManyToManyField(Categorie)
-    institution = models.ForeignKey(Institution,on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Categorie, null=True)
+    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     address = models.CharField(max_length=128)
     phone_number = models.CharField(max_length=32)
     city = models.CharField(max_length=64)

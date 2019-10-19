@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <a href="#" class="btn btn--large">Załóż konto</a>
+  <a href="register" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section id="about-us" class="about-us">
@@ -93,7 +93,13 @@
           <div class="subtitle">Cel i misja: {{fundation.description}}</div>
         </div>
 
-        <div class="col"><div class="text"> TU MIALEM PROBLEM Z WYPEŁNIENIEM BAZY MANY TO MANY</div></div>
+        <div class="col">{% for category in fundation.categories.all %}
+          <div class="text">
+           dd {{category.name}}
+
+          </div>
+             {% endfor %}
+         </div>
       </li>
       {% endfor %}
     <!-- Pagination
@@ -120,7 +126,13 @@
           <div class="subtitle"> {{orgnization.description}}</div>
         </div>
 
-        <div class="col"><div class="text">TU MIALEM PROBLEM Z WYPEŁNIENIEM BAZY MANY TO MANY</div></div>
+        <div class="col">{% for category in orgnization.categories.all %}
+          <div class="text">
+           dd {{category.name}}
+
+          </div>
+             {% endfor %}
+         </div>
       </li>
 
 
@@ -147,8 +159,13 @@
           <div class="subtitle">{{local_collect.description}}</div>
         </div>
 
-        <div class="col"><div class="text">TU MIALEM PROBLEM Z WYPEŁNIENIEM BAZY MANY TO MANY</div></div>
-      </li>
+        <div class="col">{% for category in local_collect.categories.all %}
+          <div class="text">
+           dd {{category.name}}
+
+          </div>
+             {% endfor %}
+         </div>      </li>
 
     <!-- Pagination
     <ul class="help--slides-pagination">

@@ -11,7 +11,7 @@ INSTITUTION_TYPES = (
 )
 
 
-class Categorie(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=128)
 
 
@@ -19,12 +19,12 @@ class Institution(models.Model):
     name = models.CharField(max_length=128)
     description = models.TextField(default=None)
     types = models.IntegerField(choices=INSTITUTION_TYPES, default=1)
-    categories = models.ManyToManyField(Categorie, null=True)
+    category = models.ManyToManyField(Category)
 
 
 class Donation(models.Model):
     quantity = models.IntegerField()
-    categories = models.ManyToManyField(Categorie, null=True)
+    category = models.ManyToManyField(Category)
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     address = models.CharField(max_length=128)
     phone_number = models.CharField(max_length=32)

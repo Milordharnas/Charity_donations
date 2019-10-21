@@ -93,22 +93,23 @@
           <div class="subtitle">Cel i misja: {{fundation.description}}</div>
         </div>
 
-        <div class="col">{% for category in fundation.categories.all %}
+        <div class="col">
           <div class="text">
-           dd {{category.name}}
+            {% for cat in fundation.category.all %}
 
-          </div>
+            {{cat.name}}{%if not forloop.last%},{%endif%}
              {% endfor %}
+          </div>
+
          </div>
       </li>
       {% endfor %}
-    <!-- Pagination
     <ul class="help--slides-pagination">
-      <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-      <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-      <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
+      <li><a href="{{ page_nr }}" class="btn btn--small btn--without-border active" data-page="{{page_nr}}">{{page_nr}}</a></li>
+      <li><a href="{{ page_nr|add:1 }}" class="btn btn--small btn--without-border" data-page="{{ page_nr|add:1 }}">{{ page_nr|add:1 }}</a></li>
+      <li><a href="{{ page_nr|add:2 }}" class="btn btn--small btn--without-border" data-page="{{ page_nr|add:2 }}">{{ page_nr|add:2 }}</a></li>
     </ul>
-    -->
+
   </div>
 
 
@@ -126,26 +127,23 @@
           <div class="subtitle"> {{orgnization.description}}</div>
         </div>
 
-        <div class="col">{% for category in orgnization.categories.all %}
+        <div class="col">{% for cat in orgnization.category.all %}
           <div class="text">
-           dd {{category.name}}
-
+            {{cat.name}}
           </div>
              {% endfor %}
          </div>
       </li>
 
-
-    <!-- Pagination
-    <ul class="help--slides-pagination">
-      <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-      <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-      <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
-      <li><a href="#" class="btn btn--small btn--without-border" data-page="4">4</a></li>
-      <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
-    </ul>
-    -->
       {% endfor %}
+      <ul class="help--slides-pagination">
+        <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
+        <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
+        <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
+        <li><a href="#" class="btn btn--small btn--without-border" data-page="4">4</a></li>
+        <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
+      </ul>
+
   </div>
 
   <!-- SLIDE 3 -->
@@ -159,22 +157,18 @@
           <div class="subtitle">{{local_collect.description}}</div>
         </div>
 
-        <div class="col">{% for category in local_collect.categories.all %}
+        <div class="col">{% for cat in local_collect.category.all %}
           <div class="text">
-           dd {{category.name}}
-
+            {{cat.name}}
           </div>
              {% endfor %}
          </div>      </li>
 
-    <!-- Pagination
+    {% endfor %}
     <ul class="help--slides-pagination">
       <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
       <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
     </ul>
-    -->
-    {% endfor %}
-
   </div>
 </section>
 {% endblock %}

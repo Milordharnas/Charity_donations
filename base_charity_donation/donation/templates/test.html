@@ -1,6 +1,8 @@
 
-{% for fun in fundations %}
-  {% for a in fun.categories.objects.all %}
-    czesc
-  {% endfor %}
-{% endfor %}
+<br/>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br/>
+    <input type="submit" value="Dodaj ">
+</form>

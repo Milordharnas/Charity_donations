@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexPage(TemplateView):
@@ -68,5 +69,13 @@ class SignUp(CreateView):
 #             return HttpResponseRedirect('/login')
 
 
-class AddDonationPage(TemplateView):
+class AddDonationPage(LoginRequiredMixin, TemplateView):
     template_name = "form.html"
+
+    def get_context_data(self):
+        ctx = {"categories": Category.objects.all()}
+        return ctx
+
+
+class UserProfilPage(LoginRequiredMixin, TemplateView):
+    template_name = "profil.html"

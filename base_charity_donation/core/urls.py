@@ -21,6 +21,6 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("donation.urls")),
-    path("", include("django.contrib.auth.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("", IndexPage.as_view(), name="home"),
 ]

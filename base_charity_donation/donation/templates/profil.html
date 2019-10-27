@@ -3,8 +3,13 @@
 {% block content %}
 <div class="col">
   <h2>Użytkownik : {{user.username}}</h2>
-  {{user.first_name}}
-  Cos se napisze
+  <div class="col">
+    <h3>
+  <li>Imię: {{user.first_name}} </li>
+  <li>Nazwisko: {{user.last_name}} </li>
+  <li>Email: {{user.email}} </li>
+  </h3>
+  </div>
 </div>
 
 {% endblock %}

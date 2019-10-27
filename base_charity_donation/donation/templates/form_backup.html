@@ -60,12 +60,13 @@
           <div data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
 
+            {% csrf_token %}
             {% for category in categories %}
             <div class="form-group form-group--checkbox">
               <label>
                 <input
                   type="checkbox"
-                  name="categories"
+                  name="categories[]"
                   value="{{category.name}}"
                 />
                 <span class="checkbox"></span>
@@ -73,6 +74,7 @@
                   >{{category.name}}</span
                 >
               </label>
+              {{liczba}}
             </div>
             {% endfor %}
 
@@ -96,6 +98,7 @@
               <button type="button" class="btn prev-step">Wstecz</button>
               <button type="button" class="btn next-step">Dalej</button>
             </div>
+            {{liczba}}
           </div>
 
 
